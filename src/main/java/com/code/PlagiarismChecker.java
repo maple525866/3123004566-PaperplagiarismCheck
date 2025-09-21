@@ -45,7 +45,7 @@ public class PlagiarismChecker {
      * @return file content as string
      * @throws IOException file read exception
      */
-    private static String readFile(String filePath) throws IOException {
+    protected static String readFile(String filePath) throws IOException {
         StringBuilder content = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8))) {
@@ -63,7 +63,7 @@ public class PlagiarismChecker {
      * @param similarity similarity value
      * @throws IOException file write exception
      */
-    private static void writeResult(String outputFilePath, double similarity) throws IOException {
+    protected static void writeResult(String outputFilePath, double similarity) throws IOException {
         DecimalFormat df = new DecimalFormat("0.00");
         double percentage = similarity * 100;
         String result = df.format(percentage) + "%";
@@ -81,7 +81,7 @@ public class PlagiarismChecker {
      * @param text2 plagiarized text
      * @return similarity (0.00-1.00)
      */
-    private static double calculateSimilarity(String text1, String text2) {
+    protected static double calculateSimilarity(String text1, String text2) {
         if (text1 == null || text2 == null) {
             return 0.0;
         }
@@ -116,7 +116,7 @@ public class PlagiarismChecker {
      * @param text2 text 2
      * @return LCS length
      */
-    private static int longestCommonSubsequence(String text1, String text2) {
+    protected static int longestCommonSubsequence(String text1, String text2) {
         int m = text1.length();
         int n = text2.length();
         
